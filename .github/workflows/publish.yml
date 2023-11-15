@@ -23,7 +23,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
       - name: Build lib
         run: pnpm run build
-      - name: Publish package on NPM 📦
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          registry: "https://npm.pkg.github.com"
